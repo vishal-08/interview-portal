@@ -1,0 +1,78 @@
+<div class="container">
+    <div class="row">
+        <h1>My Interview Portal</h1>
+        <hr />
+        <div class="col-md-12">
+            <div class="card card-default">
+                <div class="card-header">{{ name }}</div>
+                <div class="card-body">
+
+
+
+                    <!-- <form *ngIf="previousQuestion(); else next">
+                        <label style="margin-bottom: 10px; font-weight: bold;">{{ previtem.questionText }}</label>
+
+
+                        <div *ngIf="prevtype === 'Multiple-Response' ; else other">
+                            <div class="form-group form-check"
+                                *ngFor="let option of prevoptions ; let indexOfOption = index">
+                                <input type="checkbox" class="form-check-input" id="exampleCheck1"
+                                    (click)="onSelect(indexOfOption)" />
+                                <label class="form-check-label" for="exampleCheck1">{{
+                                    option
+                                    }}</label>
+                            </div>
+                        </div>
+
+                        <ng-template #other>
+                            <div class="radio" *ngFor="let option of prevoptions; let indexOfOption = index"
+                                (click)="onSelect(indexOfOption)">
+                                <label>
+                                    <input type="radio" name="option" value="option1" />
+                                    {{ option }}
+                                </label>
+                            </div>
+                        </ng-template>
+                    </form> -->
+
+                   
+                        <form >
+                            <label style="margin-bottom: 10px; font-weight: bold;">{{ item.questionText }}</label>
+
+
+                            <div *ngIf="type === 'Multiple-Response' ; else other">
+                                <div class="form-group form-check"
+                                    *ngFor="let option of options ; let indexOfOption = index">
+                                    <input  type="checkbox" class="form-check-input" value="{{option}}" name="{{option}}" id="{{indexOfOption}}"
+                                        (change)="onSelect($event)" />
+                                    <label class="form-check-label" for="exampleCheck1">{{
+                                        option
+                                        }}</label>
+                                </div>
+                            </div>
+
+                            <ng-template #other >
+                                <div #radioEl class="radio" *ngFor="let option of options; let indexOfOption = index"
+                                    (change)="onSelect($event)" >
+                                    <label>
+                                        <input type="radio" name="options"  value="{{option}}"  id="{{indexOfOption}}" class="radio" [(ngModel)] = "fetched">
+                                        {{ option }}
+                                    </label>
+                                </div>
+                            </ng-template>
+
+                            <button *ngIf="selected.length > 0" class="btn btn-info mx-2" (click)="previousQuestion()">Previous</button>
+                            <button type="submit" *ngIf = "availableQues.length > 1"  class="btn btn-success mx-2"
+                                (click)="nextQuestion()">Next</button>
+                            <button *ngIf="availableQues.length === 1" 
+                                routerLinkActive="router-link-active" class="float-right btn btn-danger" (click) = "onFinish()">Finish</button>
+                        </form>
+                 
+                </div>
+                <div class="card-footer">
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
